@@ -15,7 +15,7 @@ struct ContentView: View {
         TabView {
             
             // General View
-            HomeView()
+            LeftTabView()
                 
                 // Tab Icon
                 .tabItem {
@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             
             // Country List View
-            CountryListView()
+            RightTabView()
                 
                 // Tab Icon
                 .tabItem {

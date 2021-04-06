@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct HomeView: View {
+struct LeftTabView: View {
     
     @EnvironmentObject var countriesVM : CountriesViewModel
     
