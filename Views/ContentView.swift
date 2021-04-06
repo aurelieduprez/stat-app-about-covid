@@ -14,22 +14,22 @@ struct ContentView: View {
     var body: some View {
         TabView {
             
-            // General View
+            // onglet de gauche, contient le menu avec le nombre de cas, morts et guerisons
             LeftTabView()
                 
-                // Tab Icon
+                // logo globe
                 .tabItem {
                     Image(systemName: "globe")
-                    Text("Global")
+                    Text("Menu")
                 }
             
-            // Country List View
+            // liste de tous les pays, liste d'item (cf. country item list
             RightTabView()
                 
-                // Tab Icon
+                // logo pour la liste
                 .tabItem {
                     Image(systemName: "list.dash")
-                    Text("Countries")
+                    Text("Dans le monde")
                 }
         }
     }

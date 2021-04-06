@@ -42,7 +42,7 @@ struct DetailItem: View {
                     .fontWeight(.black)
                     .foregroundColor(color)
                 
-                Text( "+ \(String(dailyNumber)) Today")
+                Text( "+ \(String(dailyNumber)) aujourd'hui")
                     .font(.caption)
                     .foregroundColor(color)
                 

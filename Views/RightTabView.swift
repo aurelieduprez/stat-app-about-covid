@@ -59,13 +59,13 @@ struct RightTabView: View {
                 }
             
                 // Navigation view Title
-                .navigationBarTitle(Text("Countries"))
+                .navigationBarTitle(Text("Pays"))
                     
                 // Navigation view Items
                 .navigationBarItems(trailing: HStack() {
                     
                     Toggle(isOn: $showFavorites) {
-                        Text("Favorites")
+                        Text("Favoris")
                     }
                     
                 })
