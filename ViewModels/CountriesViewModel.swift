@@ -10,7 +10,7 @@ import SwiftUI
 
 class CountriesViewModel: ObservableObject {
     
-    // Published variables
+    // declaration variables published
     @Published var countries: [Country] = []
     @Published var global: Global?
     @Published var favorties: [String] = UserDefaults.standard.array(forKey: "Favorites") as? [String] ?? [] as [String] {
@@ -19,25 +19,25 @@ class CountriesViewModel: ObservableObject {
         }
     }
     
-    // Fetch countries when application Starts
+    // recupère les données auprès de l'API
     init() {
         fetchAPI()
     }
     
-    // Update the countries property with the API data
+    // maj des données des pays
     func fetchAPI() {
         
         guard let url = URL( string:"https://api.covid19api.com/summary" ) else { return }
         
         URLSession.shared.dataTask(with: url, completionHandler: {data, _, err in
         
-        // Check if we got an error and data is ok
+        // Vérifie l'état des données recues
         guard let data = data, err == nil else {
-            print("Something went wrong")
+            print("Erreur lors du chargement. Veuillez réessayer plus tard.")
             return
         }
             
-        // Update property countries in the right thread
+        //maj asynchrone des données
             DispatchQueue.main.async {
                 var decodedData: Response?
                 do {
@@ -46,10 +46,10 @@ class CountriesViewModel: ObservableObject {
                     self.global = decodedData!.Global
                 }
                 catch {
-                    print("JSON conversion failed: \(error.localizedDescription)")
+                    print("Erreur lors de la conversion des données JSON: \(error.localizedDescription)")
                 }
             }
-        }).resume() // Execute request
+        }).resume() //execution requete
         
     }
     

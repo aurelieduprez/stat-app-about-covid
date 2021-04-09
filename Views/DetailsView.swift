@@ -18,8 +18,12 @@ struct DetailView: View {
     @State var isFavorite : Bool
     @State var isShareSheetShowing: Bool = false
     
+    
+    //bouton partager
     func shareButton() {
         isShareSheetShowing.toggle()
+        
+        // le bouton partager permet de transmettre copier dans le presse papier le nombre de deces/cas/guérisons du pays choisi
         
         let text = "\(country.Country): \(country.TotalConfirmed) Confirmed cases, \(country.TotalDeaths) Deaths, \(country.TotalRecovered) Recovered"
         let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
@@ -33,23 +37,23 @@ struct DetailView: View {
             HStack {
                 Spacer()
             }
-            
+            // pour chaque element de la liste des pays, détails de chaque pays (cas, deces, guerisons)
             DetailItem(
-                labelText: "Cases",
+                labelText: "Cas",
                 totalNumber: country.TotalConfirmed,
                 dailyNumber: country.NewConfirmed,
                 color: Color(UIColor.systemOrange)
             )
             
             DetailItem(
-                labelText: "Deaths",
+                labelText: "Décès",
                 totalNumber: country.TotalDeaths,
                 dailyNumber: country.NewDeaths,
                 color: Color(UIColor.systemRed)
             )
             
             DetailItem(
-                labelText: "Recovered",
+                labelText: "Guérisons",
                 totalNumber: country.TotalRecovered,
                 dailyNumber: country.NewRecovered,
                 color: Color(UIColor.systemGreen)
@@ -61,6 +65,7 @@ struct DetailView: View {
         .navigationBarItems(trailing:
             HStack(spacing: 20.0) {
                 Button(action: shareButton ) {
+                    //bouton partager
                     Image(systemName: "square.and.arrow.up")
                     .resizable()
                     .scaledToFit()
@@ -68,7 +73,7 @@ struct DetailView: View {
                     .foregroundColor( Color(UIColor.systemBlue) )
                 }
                 
-                
+                //animation etoile selectionnee
                 Button(action: {
                     withAnimation {self.isFavorite.toggle()}
                     if self.isFavorite {
