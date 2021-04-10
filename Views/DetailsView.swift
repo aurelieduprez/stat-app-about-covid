@@ -25,7 +25,7 @@ struct DetailView: View {
         
         // le bouton partager permet de transmettre copier dans le presse papier le nombre de deces/cas/guérisons du pays choisi
         
-        let text = "\(country.Country): \(country.TotalConfirmed) Confirmed cases, \(country.TotalDeaths) Deaths, \(country.TotalRecovered) Recovered"
+        let text = "\(country.Country): \(country.TotalConfirmed) cas, \(country.TotalDeaths) décès, \(country.TotalRecovered) guérisons"
         let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
         

@@ -24,7 +24,7 @@ class CountriesViewModel: ObservableObject {
         fetchAPI()
     }
     
-    // maj des données des pays
+    // definition fonction fetchAPI
     func fetchAPI() {
         
         guard let url = URL( string:"https://api.covid19api.com/summary" ) else { return }
