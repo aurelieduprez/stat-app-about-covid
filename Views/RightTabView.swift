@@ -11,60 +11,53 @@ import SwiftUI
 
 struct RightTabView: View {
 
-    @EnvironmentObject var countriesVM : CountriesViewModel
+    @EnvironmentObject var countriesModel: CountriesViewModel
     @State private var isRefreshing = false
     @State private var showFavorites = false
 
     // Returns the correct country array according to the showFavorites property
     private func getFavoriteFilteredCountryArray() -> [Country] {
         return !self.showFavorites ?
-            countriesVM.countries :
-            countriesVM.countries.filter { self.countriesVM.favorties.contains($0.CountryCode)
+            countriesModel.countries :
+            countriesModel.countries.filter { self.countriesModel.favorites.contains($0.CountryCode)
                 
             }
     }
     
-    // Returns a boolean value telling us is the country is vaforite or not
+    // booleen si le pays est en favoris ou non
     private func isFavorite(country: Country) -> Bool {
-        return self.countriesVM.favorties.contains( country.CountryCode )
+        return self.countriesModel.favorites.contains( country.CountryCode )
     }
 
     var body: some View {
         
-        // List View
+        // liste
         NavigationView {
             
             List( getFavoriteFilteredCountryArray() ) { country in
                 
                 NavigationLink(
-                    // Details View
+                    //Details view
                     destination: DetailView (
                         country: country,
                         isFavorite: self.isFavorite(country: country)
                     )
                 ) {
-                    // Item View
+                    // country item View
                     CountryItemView (
                         country: country,
                         isFavorite: self.isFavorite(country: country)
                     )
                 }
             }
-                // Pull to refresh handler
-                .pullToRefresh(isShowing: $isRefreshing) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.isRefreshing = false
-                    }
-                    self.countriesVM.fetchAPI()
-                }
-            
-                // Navigation view Title
+          
+                // Navigation view titre
                 .navigationBarTitle(Text("Pays"))
                     
                 // Navigation view Items
                 .navigationBarItems(trailing: HStack() {
                     
-                    Toggle(isOn: $showFavorites) {
+                    Toggle(isOn: $showFavorites) { //bouton switch des favoris, si activé faire $showfavorites
                         Text("Favoris")
                     }
                     

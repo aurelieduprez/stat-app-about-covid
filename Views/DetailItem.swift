@@ -11,13 +11,13 @@ import SwiftUI
 
 struct DetailItem: View {
     
-    // Properties
+    // var pour les données
     var labelText: String
     var totalNumber: Int
     var dailyNumber: Int
     var color: Color
     
-    // Struct init
+    // Struct des données
     init(labelText: String, totalNumber: Int, dailyNumber: Int, color: Color) {
         self.labelText = labelText
         self.totalNumber = totalNumber
@@ -25,7 +25,7 @@ struct DetailItem: View {
         self.color = color
     }
     
-    // Body
+    // Body de la view
     var body: some View {
         HStack {
             // Label
@@ -34,7 +34,7 @@ struct DetailItem: View {
             
             Spacer()
             
-            // Data
+            //données en vertical stack
             VStack(alignment: .trailing) {
                 
                 Text( String(totalNumber) )

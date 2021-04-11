@@ -11,7 +11,7 @@ import SwiftUI
 
 struct DetailView: View {
     
-    @EnvironmentObject var countriesVM : CountriesViewModel
+    @EnvironmentObject var countriesModel : CountriesViewModel
     @Environment(\.colorScheme) var colorScheme
     
     let country: Country
@@ -23,7 +23,7 @@ struct DetailView: View {
     func shareButton() {
         isShareSheetShowing.toggle()
         
-        // le bouton partager permet de transmettre copier dans le presse papier le nombre de deces/cas/guérisons du pays choisi
+        // le bouton partager permet de copier dans le presse papier le nombre de deces/cas/guérisons du pays choisi
         
         let text = "\(country.Country): \(country.TotalConfirmed) cas, \(country.TotalDeaths) décès, \(country.TotalRecovered) guérisons"
         let av = UIActivityViewController(activityItems: [text], applicationActivities: nil)
@@ -37,7 +37,7 @@ struct DetailView: View {
             HStack {
                 Spacer()
             }
-            // pour chaque element de la liste des pays, détails de chaque pays (cas, deces, guerisons)
+            // pour chaque element de la liste des pays, retourne un detailitem (cas, deces, guerisons)
             DetailItem(
                 labelText: "Cas",
                 totalNumber: country.TotalConfirmed,
@@ -77,9 +77,9 @@ struct DetailView: View {
                 Button(action: {
                     withAnimation {self.isFavorite.toggle()}
                     if self.isFavorite {
-                        self.countriesVM.favorties.append( self.country.CountryCode )
+                        self.countriesModel.favorites.append( self.country.CountryCode )
                     } else {
-                        self.countriesVM.favorties = self.countriesVM.favorties.filter { $0 != self.country.CountryCode}
+                        self.countriesModel.favorites = self.countriesModel.favorites.filter { $0 != self.country.CountryCode}
                     }
                 }) {
                     Image(systemName: isFavorite ? "star.fill" : "star")

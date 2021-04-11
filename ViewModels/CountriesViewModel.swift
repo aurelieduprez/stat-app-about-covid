@@ -13,9 +13,9 @@ class CountriesViewModel: ObservableObject {
     // declaration variables published
     @Published var countries: [Country] = []
     @Published var global: Global?
-    @Published var favorties: [String] = UserDefaults.standard.array(forKey: "Favorites") as? [String] ?? [] as [String] {
+    @Published var favorites: [String] = UserDefaults.standard.array(forKey: "Favorites") as? [String] ?? [] as [String] {
         didSet {
-            UserDefaults.standard.set(self.favorties, forKey: "Favorites")
+            UserDefaults.standard.set(self.favorites, forKey: "Favorites")
         }
     }
     
@@ -32,7 +32,7 @@ class CountriesViewModel: ObservableObject {
         URLSession.shared.dataTask(with: url, completionHandler: {data, _, err in
         
         // Vérifie l'état des données recues
-        guard let data = data, err == nil else {
+        guard let data = data, err == nil else { //nil - pas un objet valide
             print("Erreur lors du chargement. Veuillez réessayer plus tard.")
             return
         }

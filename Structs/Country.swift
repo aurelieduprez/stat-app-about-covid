@@ -7,7 +7,7 @@
 //
 import Foundation
 
-// Country
+// definition de la structure de country
 struct Country: Codable, Identifiable {
     let id = UUID()
     let Country: String

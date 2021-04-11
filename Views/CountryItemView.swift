@@ -20,19 +20,18 @@ struct CountryItemView: View {
         // Navigation cell
         HStack() {
             
-            // Country flag
+            // drapeau selon country code
             Image(country.CountryCode)
                 .resizable()
-                .cornerRadius(8.0)
                 .scaledToFit()
                 .frame(width: 64.0)
             
-            // Country name label
+            // label nom du pays
             Text(country.Country)
             
             Spacer()
             
-            // Favorite indicator
+            // etoile favoris
             if self.isFavorite {
                 Image(systemName: "star.fill")
                     .foregroundColor(

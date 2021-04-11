@@ -11,7 +11,7 @@ import SwiftUI
 
 struct LeftTabView: View {
     
-    @EnvironmentObject var countriesVM : CountriesViewModel
+    @EnvironmentObject var countriesModel : CountriesViewModel
     
     var body: some View {
         
@@ -26,21 +26,21 @@ struct LeftTabView: View {
                     
                     DetailItem(
                         labelText: "Cas",
-                        totalNumber: countriesVM.global?.TotalConfirmed ?? 0,
-                        dailyNumber: countriesVM.global?.NewConfirmed ?? 0,
+                        totalNumber: countriesModel.global?.TotalConfirmed ?? 0,
+                        dailyNumber: countriesModel.global?.NewConfirmed ?? 0,
                         color: Color(UIColor.systemOrange))
                     
                     DetailItem(
                         labelText: "Décès",
-                        totalNumber: countriesVM.global?.TotalDeaths ?? 0,
-                        dailyNumber: countriesVM.global?.NewDeaths ?? 0,
+                        totalNumber: countriesModel.global?.TotalDeaths ?? 0,
+                        dailyNumber: countriesModel.global?.NewDeaths ?? 0,
                         color: Color(UIColor.systemRed)
                     )
                     
                     DetailItem(
                         labelText: "Guérisons",
-                        totalNumber: countriesVM.global?.TotalRecovered ?? 0,
-                        dailyNumber: countriesVM.global?.NewRecovered ?? 0,
+                        totalNumber: countriesModel.global?.TotalRecovered ?? 0,
+                        dailyNumber: countriesModel.global?.NewRecovered ?? 0,
                         color: Color(UIColor.systemGreen)
                     )
             }

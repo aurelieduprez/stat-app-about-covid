@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Global data
+// definition de la sts stats globales
 struct Global: Codable {
     let NewConfirmed: Int
     let TotalConfirmed: Int

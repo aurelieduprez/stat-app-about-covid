@@ -8,7 +8,7 @@
 
 import Foundation
 
-// API response
+// definition de la strucure de la reponse de l'API
 struct Response: Codable {
     let Global: Global
     let Countries: Array<Country>
